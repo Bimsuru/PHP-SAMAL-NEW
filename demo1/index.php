@@ -86,7 +86,7 @@ if (isset($_GET['sso'])) {
     $_SESSION['samlSessionIndex'] = $auth->getSessionIndex();
     unset($_SESSION['AuthNRequestID']);
     if (isset($_POST['RelayState']) && OneLogin_Saml2_Utils::getSelfURL() != $_POST['RelayState']) {
-        $auth->sanitize_text_field($_POST['RelayState']);
+        $auth->sanitize_text_field(wp_unslash($_POST['RelayState']));
     }
 } else if (isset($_GET['sls'])) {
     if (isset($_SESSION) && isset($_SESSION['LogoutRequestID'])) {
