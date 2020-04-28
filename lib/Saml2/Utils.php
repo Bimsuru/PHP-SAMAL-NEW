@@ -152,7 +152,7 @@ class OneLogin_Saml2_Utils
 
             if ($debug) {
                 foreach ($xmlErrors as $error) {
-                    echo htmlentities($error->message."\n");
+                    echo esc_html($error->message."\n");
                 }
             }
 
