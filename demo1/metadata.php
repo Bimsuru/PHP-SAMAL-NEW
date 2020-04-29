@@ -17,7 +17,7 @@ try {
     $errors = $settings->validateMetadata($metadata);
     if (empty($errors)) {
         header('Content-Type: text/xml');
-        echo esc_html($metadata);
+        echo esc_attr($metadata);
     } else {
         throw new OneLogin_Saml2_Error(
             'Invalid SP metadata: '.implode(', ', $errors),
@@ -25,5 +25,5 @@ try {
         );
     }
 } catch (Exception $e) {
-    echo esc_html($e)->getMessage();
+    echo esc_attr($e)->getMessage();
 }
