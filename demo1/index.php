@@ -85,7 +85,7 @@ if (isset($_GET['sso'])) {
     $_SESSION['samlNameIdSPNameQualifier'] = $auth->getNameIdSPNameQualifier();
     $_SESSION['samlSessionIndex'] = $auth->getSessionIndex();
     unset($_SESSION['AuthNRequestID']);
-    if (isset($_POST['RelayState']) && OneLogin_Saml2_Utils::getSelfURL() != ($_POST['RelayState'] {
+    if (isset($_POST['RelayState']) && OneLogin_Saml2_Utils::getSelfURL() != $_POST['RelayState'] {
         $auth-> sanitize_text_field(wp_unslash($_POST['RelayState']));
     }
 } else if (isset($_GET['sls'])) {
