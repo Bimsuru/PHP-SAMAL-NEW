@@ -605,8 +605,9 @@ class OneLogin_Saml2_Utils
     {
         $selfURLNoQuery = self::getSelfURLhost();
 
+        if(isset( $_SERVER['SCRIPT_NAME'])){
         $infoWithBaseURLPath = self::buildWithBaseURLPath(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])));
-        if (!empty($infoWithBaseURLPath)) {
+        }if (!empty($infoWithBaseURLPath)) {
             $selfURLNoQuery .= $infoWithBaseURLPath;
         } else {
             $selfURLNoQuery .= $_SERVER['SCRIPT_NAME'];
