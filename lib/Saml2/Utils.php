@@ -724,8 +724,10 @@ class OneLogin_Saml2_Utils
      */
     public static function extractOriginalQueryParam($name)
     {
+        if(isset($_SERVER['QUERY_STRING'])){
         $index = strpos(sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'], $name.'=')));
         $substring = substr(sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'], $index + strlen($name) + 1)));
+        }
         $end = strpos($substring, '&');
         return $end ? substr($substring, 0, strpos($substring, '&')) : $substring;
     }
