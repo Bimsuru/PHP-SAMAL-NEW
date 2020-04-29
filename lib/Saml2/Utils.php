@@ -610,7 +610,7 @@ class OneLogin_Saml2_Utils
         }if (!empty($infoWithBaseURLPath)) {
             $selfURLNoQuery .= $infoWithBaseURLPath;
         } else {
-            $selfURLNoQuery .= $_SERVER['SCRIPT_NAME'];
+            $selfURLNoQuery .= sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME']));
         }
 
         if (isset($_SERVER['PATH_INFO'])) {
