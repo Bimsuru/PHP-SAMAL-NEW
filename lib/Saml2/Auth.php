@@ -206,7 +206,7 @@ class OneLogin_Saml2_Auth
         $this->_errorReason = null;
         if (isset($_POST['SAMLResponse'])) {
             // AuthnResponse -- HTTP_POST Binding
-            $response = new OneLogin_Saml2_Response($this->_settings, $_POST['SAMLResponse']);
+            $response = new OneLogin_Saml2_Response($this->_settings, sanitize_text_field( wp_unslash($_POST['SAMLResponse'])));
             $this->_lastResponse = $response->getXMLDocument();
 
             if ($response->isValid($requestId)) {
@@ -253,7 +253,7 @@ class OneLogin_Saml2_Auth
         $this->_errors = array();
         $this->_errorReason = null;
         if (isset($_GET['SAMLResponse'])) {
-            $logoutResponse = new OneLogin_Saml2_LogoutResponse($this->_settings, $_GET['SAMLResponse']);
+            $logoutResponse = new OneLogin_Saml2_LogoutResponse($this->_settings, sanitize_text_field( wp_unslash($_GET['SAMLResponse'])));
             $this->_lastResponse = $logoutResponse->getXML();
             if (!$logoutResponse->isValid($requestId, $retrieveParametersFromServer)) {
                 $this->_errors[] = 'invalid_logout_response';
